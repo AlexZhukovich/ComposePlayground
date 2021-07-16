@@ -39,20 +39,34 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.32'
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("androidx.compose.ui:ui-tooling:1.0.0-beta09")
+        force("androidx.compose.ui:ui-tooling-data:1.0.0-beta09")
+        force("androidx.compose.ui:ui-tooling-preview:1.0.0-beta09")
     }
 }
 
 dependencies {
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_ktx_version"
     implementation "com.google.android.material:material:$android_material_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_ktx_version"
 
+    implementation "androidx.compose.runtime:runtime:$compose_version"
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.activity:activity-compose:$compose_activity_version"
+    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.animation:animation:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
     implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
 
     testImplementation "junit:junit:$junit4_version"
