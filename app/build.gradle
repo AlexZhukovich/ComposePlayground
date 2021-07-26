@@ -68,6 +68,7 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
     implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
     implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
 
     testImplementation "junit:junit:$junit4_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
