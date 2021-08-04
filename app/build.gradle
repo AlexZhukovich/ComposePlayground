@@ -42,14 +42,6 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force("androidx.compose.ui:ui-tooling:1.0.0-beta09")
-        force("androidx.compose.ui:ui-tooling-data:1.0.0-beta09")
-        force("androidx.compose.ui:ui-tooling-preview:1.0.0-beta09")
-    }
-}
-
 dependencies {
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
