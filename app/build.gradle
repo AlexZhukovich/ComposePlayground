@@ -13,7 +13,7 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -61,6 +61,10 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
     implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
     implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     testImplementation "junit:junit:$junit4_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
