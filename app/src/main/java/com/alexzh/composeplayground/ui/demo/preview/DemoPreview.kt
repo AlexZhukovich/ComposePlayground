@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import com.alexzh.composeplayground.ui.theme.PlaygroundTheme
 
 const val TEXT = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
@@ -40,6 +43,20 @@ fun Demo_Preview_1() {
             subtitle = "Subtitle 1",
             text = TEXT
         )
+    }
+}
+
+@Preview
+@Composable
+fun Demo_Preview_2() {
+    PlaygroundTheme {
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+            TestComposable(
+                title = "Title 2",
+                subtitle = "Subtitle 2",
+                text = TEXT
+            )
+        }
     }
 }
 
