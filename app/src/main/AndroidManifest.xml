@@ -20,6 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.demo.addcomposable.fragment.DemoFragmentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.demo.addcomposable.activity.DemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.demo.addcomposable.composeview.DemoComposeViewActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
