@@ -40,6 +40,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
     }
+    packagingOptions {
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
 }
 
 dependencies {
@@ -68,4 +72,5 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
 }
