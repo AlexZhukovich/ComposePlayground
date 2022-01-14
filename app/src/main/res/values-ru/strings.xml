@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ComposePlayground</string>
+
+    <string name="demo_title">Заголовок</string>
+    <string name="demo_subtitle">Подзаголовок</string>
+    <string name="demo_text">Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст, Длинный текст</string>
+
+    <string name="espresso_title">Эспрессо</string>
+    <string name="espresso_ingredients">Молотый кофе, Вода</string>
+</resources>

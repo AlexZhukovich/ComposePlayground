@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ComposePlayground</string>
+
+    <string name="espresso_title">إسبرسو</string>
+    <string name="espresso_ingredients">البن المطحون والماء</string>
+</resources>

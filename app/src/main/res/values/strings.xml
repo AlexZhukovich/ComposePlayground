@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ComposePlayground</string>
+
+    <string name="demo_title">Title</string>
+    <string name="demo_subtitle">Subtitle</string>
+    <string name="demo_text">Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text, Long text</string>
+
+
+    <string name="espresso_title">Espresso</string>
+    <string name="espresso_ingredients">Ground coffee, Water</string>
 </resources>
