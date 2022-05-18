@@ -49,9 +49,6 @@ fun OutlineDatePicker(
             }
         }
     }
-
-    println("OutlineDatePicker => $datePickerDialog")
-
     OutlinedTextField(
         modifier = modifier.onFocusChanged {
             if (it.isFocused)
