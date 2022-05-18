@@ -36,25 +36,29 @@ fun OutlineDatePicker(
 ) {
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current
-    val isDatePickerDisplayed = remember { mutableStateOf(false) }
 
-    val datePickerDialog = DatePickerDialog(
-        context, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-            onValueChange(LocalDate.of(year, month, dayOfMonth))
-            isDatePickerDisplayed.value = false
-            focusManager.clearFocus()
-        }, value.year, value.monthValue, value.dayOfMonth
-    )
-    datePickerDialog.setOnDismissListener {
-        isDatePickerDisplayed.value = false
-        focusManager.clearFocus()
+    val datePickerDialog = remember {
+        DatePickerDialog(
+            context, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+                onValueChange(LocalDate.of(year, month, dayOfMonth))
+                focusManager.clearFocus()
+            }, value.year, value.monthValue, value.dayOfMonth
+        ).apply {
+            setOnDismissListener {
+                focusManager.clearFocus()
+            }
+        }
     }
-    if (isDatePickerDisplayed.value) {
-        datePickerDialog.show()
-    }
+
+    println("OutlineDatePicker => $datePickerDialog")
 
     OutlinedTextField(
-        modifier = modifier.onFocusChanged { isDatePickerDisplayed.value = it.isFocused },
+        modifier = modifier.onFocusChanged {
+            if (it.isFocused)
+                datePickerDialog.show()
+            else
+                datePickerDialog.dismiss()
+        },
         label = label,
         value = value.format(formatter),
         onValueChange = { onValueChange( LocalDate.parse(it, formatter)) },
@@ -63,7 +67,7 @@ fun OutlineDatePicker(
             Icon(
                 imageVector = icon,
                 contentDescription = iconContentDescription,
-                modifier = Modifier.clickable { isDatePickerDisplayed.value = true }
+                modifier = Modifier.clickable { datePickerDialog.show() }
             )
         }
     )
