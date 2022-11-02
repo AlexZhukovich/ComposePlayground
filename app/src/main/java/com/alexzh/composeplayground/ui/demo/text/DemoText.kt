@@ -533,8 +533,18 @@ fun DemoText_capitalize_the_first_letter_of_a_book_chapter() {
         )
     )
 
-    val pagerState = rememberPagerState(pageCount = content.size)
+    capitalize_the_first_letter_of_a_book_chapter(content)
+}
+
+@ExperimentalPagerApi
+@Composable
+fun capitalize_the_first_letter_of_a_book_chapter(
+    content: List<List<String>>,
+    testData: String = ""
+) {
+    val pagerState = rememberPagerState(initialPage = 0)
     HorizontalPager(
+        count = content.size,
         state = pagerState,
         modifier = Modifier.fillMaxSize()
     ) { page ->

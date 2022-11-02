@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdk 31
-    buildToolsVersion "31.0.0"
+    compileSdk 33
+    namespace 'com.alexzh.composeplayground'
 
     defaultConfig {
         applicationId "com.alexzh.composeplayground"
         minSdk 21
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
         multiDexEnabled = true
@@ -31,19 +31,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         coreLibraryDesugaringEnabled true
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
-    }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerExtensionVersion kotlin_compiler_extenstion_version
     }
     packagingOptions {
-        excludes += "/META-INF/AL2.0"
-        excludes += "/META-INF/LGPL2.1"
+        resources {
+            excludes += ['/META-INF/AL2.0', '/META-INF/LGPL2.1']
+        }
     }
     testOptions {
         unitTests {
@@ -53,35 +50,40 @@ android {
 }
 
 dependencies {
+    def composeBom = platform("androidx.compose:compose-bom:$compose_bom_version")
+
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugarJdkLibs_version"
-
-    implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
-    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
-    implementation "com.google.android.material:material:$android_material_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_ktx_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$androidx_lifecycle_ktx_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidx_lifecycle_ktx_version"
-
-    implementation "androidx.compose.runtime:runtime:$compose_version"
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.activity:activity-compose:$compose_activity_version"
-    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.compose.foundation:foundation:$compose_version"
-    implementation "androidx.compose.animation:animation:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
+    implementation composeBom
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.material:material"
+    implementation "androidx.compose.ui:ui-tooling-preview"
+    implementation 'androidx.activity:activity-compose'
+    implementation 'androidx.compose.material:material-icons-core'
+    implementation 'androidx.compose.material:material-icons-extended'
+    implementation 'androidx.compose.material3:material3-window-size-class'
     implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
-    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_pager_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_systemuicontroller_version"
+    implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidx_lifecycle_ktx_version"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
+    implementation "com.google.android.material:material:$android_material_version"
+
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_testing_version"
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
     testImplementation "junit:junit:$junit4_version"
     testImplementation "org.robolectric:robolectric:$robolectric_version"
-    testImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    testImplementation 'androidx.compose.ui:ui-test-junit4'
 
-    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
+    androidTestImplementation composeBom
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espress_version"
+    androidTestImplementation "androidx.test:core-ktx:$androidx_test_core_version"
+    androidTestImplementation "androidx.test:core:$androidx_test_core_version"
+    androidTestImplementation "androidx.test:runner:$androidx_test_core_version"
+    androidTestImplementation "androidx.test:rules:$androidx_test_core_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_version"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test_ext_version"
 }

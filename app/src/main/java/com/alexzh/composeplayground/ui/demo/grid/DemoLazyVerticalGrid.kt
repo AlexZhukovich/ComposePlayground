@@ -4,9 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -34,7 +34,7 @@ fun DemoLazyVerticalGrid_Fixed_3_Columns() {
     val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
 
     LazyVerticalGrid(
-        cells = GridCells.Fixed(3),
+        columns = GridCells.Fixed(3),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(data) { item ->
@@ -68,7 +68,7 @@ fun DemoLazyVerticalGrid_Fixed_5_Columns() {
     )
 
     LazyVerticalGrid(
-        cells = GridCells.Fixed(7),
+        columns = GridCells.Fixed(7),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(data) { item ->
@@ -99,7 +99,7 @@ fun DemoLazyVerticalGrid_Adaptive() {
     val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
 
     LazyVerticalGrid(
-        cells = GridCells.Adaptive(160.dp),
+        columns = GridCells.Adaptive(160.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(data) { item ->
@@ -133,10 +133,10 @@ fun DemoEmojiGallery() {
 
     Scaffold(
         scaffoldState = state
-    ) {
+    ) { padding ->
         LazyVerticalGrid(
-            cells = GridCells.Fixed(3),
-            contentPadding = PaddingValues(8.dp)
+            columns = GridCells.Fixed(3),
+            contentPadding = padding
         ) {
             items(data) { item ->
                 Card(
