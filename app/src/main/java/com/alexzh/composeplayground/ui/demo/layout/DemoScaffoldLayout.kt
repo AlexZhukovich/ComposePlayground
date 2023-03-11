@@ -38,6 +38,7 @@ fun DemoScaffoldLayout_1() {
         },
         content = {
             Text(
+                modifier = Modifier.padding(it),
                 text = "Content",
                 fontSize = 40.sp
             )
@@ -117,7 +118,9 @@ fun DemoScaffoldLayout_2() {
         content = {
             Box(
                 contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it)
             ) {
                 Text(
                     text = selectedItem.value,
@@ -227,12 +230,17 @@ fun DemoScaffoldLayout_3() {
                     bottom = padding.calculateBottomPadding()
                 )
             ) {
-                itemsIndexed((1..30).toList()) { index, item ->
+                itemsIndexed((1..30).toList()) { _, item ->
                     Card(
-                        modifier = Modifier.fillMaxWidth().height(72.dp).padding(bottom = 4.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(72.dp)
+                            .padding(bottom = 4.dp)
                     ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth().padding(8.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
@@ -253,7 +261,7 @@ fun DemoScaffoldLayout_3() {
                     }
                 }
             }
-        },
+        }
     )
 }
 

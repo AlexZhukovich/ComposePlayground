@@ -3,11 +3,13 @@ package com.alexzh.composeplayground.ui.demo.text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -248,7 +250,8 @@ fun DemoText_2_addStyle() {
             )
         },
         fontSize = 24.sp,
-        modifier = Modifier.width(300.dp)
+        modifier = Modifier
+            .width(300.dp)
             .padding(8.dp)
     )
 }
@@ -438,7 +441,8 @@ fun DemoText_AnnotatedString_textAlign_property() {
             fontFamily = FontFamily.Monospace,
             letterSpacing = 4.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier.width(300.dp)
+            modifier = Modifier
+                .width(300.dp)
                 .padding(8.dp)
         )
     }
@@ -600,6 +604,91 @@ fun capitalize_the_first_letter_of_a_book_chapter(
                     )
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalTextApi::class)
+@Preview(name = "Example: Text gradient")
+@Composable
+fun DemoText_textStyleGradient() {
+    val rgbColor = listOf(Color.Red, Color.Green, Color.Blue)
+
+    Column {
+        Text(
+            text = "Text with linear gradient",
+            style = TextStyle(
+                brush = Brush.linearGradient(rgbColor),
+                fontSize = 24.sp
+            )
+        )
+
+        Text(
+            text = "Text with radial gradient",
+            style = TextStyle(
+                brush = Brush.radialGradient(rgbColor, radius = 250.0f),
+                fontSize = 24.sp
+            )
+        )
+
+        Text(
+            text = "Text with sweep gradient",
+            style = TextStyle(
+                brush = Brush.sweepGradient(rgbColor),
+                fontSize = 24.sp
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+fun Demo() {
+    val text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ..."
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.padding(16.dp)
+    ) {
+
+        // The "TextAlign.Start" aligns the text on the leading edge of the container. (Support LTR and RTL)
+        // The "TextAlign.Left" aligns the text on the left edge of the container.
+        Card(backgroundColor = Color(57, 57, 57)) {
+            Text(
+                text = text,
+                fontSize = 18.sp,
+                color = Color.White,
+                textAlign = TextAlign.Start
+            )
+        }
+
+        // The "TextAlign.End" aligns the text on the trailing edge of the container. (Support LTR and RTL)
+        // The "TextAlign.Right" align the text on the right edge of the container.
+        Card(backgroundColor = Color(57, 57, 57)) {
+            Text(
+                text = text,
+                fontSize = 18.sp,
+                color = Color.White,
+                textAlign = TextAlign.End
+            )
+        }
+
+        Card(backgroundColor = Color(57, 57, 57)) {
+            Text(
+                text = text,
+                fontSize = 18.sp,
+                color = Color.White,
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Card(backgroundColor = Color(57, 57, 57)) {
+            Text(
+                text = text,
+                fontSize = 18.sp,
+                color = Color.White,
+                textAlign = TextAlign.Justify
+            )
         }
     }
 }

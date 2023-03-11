@@ -21,9 +21,11 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.alexzh.composeplayground.ui.demo.coffeedrinks.coffeeDrinks
 
 @Composable
 fun CoffeeDrinkItem(
@@ -35,7 +37,8 @@ fun CoffeeDrinkItem(
         modifier = Modifier.background(MaterialTheme.colors.background)
     ) {
         Surface(
-            modifier = Modifier.size(72.dp)
+            modifier = Modifier
+                .size(72.dp)
                 .padding(8.dp),
             shape = CircleShape,
             color = Color(0xFFFAFAFA)
@@ -47,7 +50,8 @@ fun CoffeeDrinkItem(
             )
         }
         Box(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .weight(1f)
         ) {
             Column {
@@ -64,7 +68,8 @@ fun CoffeeDrinkItem(
                 Text(
                     text = ingredients,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .alpha(0.54f),
                     maxLines = 1,
                     style = MaterialTheme.typography.body1,
@@ -98,7 +103,8 @@ private fun CoffeeDrinkItem2Portrait(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .background(MaterialTheme.colors.background)
     ) {
         Surface(
@@ -120,7 +126,8 @@ private fun CoffeeDrinkItem2Portrait(
             Text(
                 text = title,
                 style = MaterialTheme.typography.h4.copy(color = MaterialTheme.colors.onBackground),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .align(Alignment.Start)
             )
 
@@ -128,7 +135,8 @@ private fun CoffeeDrinkItem2Portrait(
                 Text(
                     text = ingredients,
                     style = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.onBackground),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .align(Alignment.Start)
                 )
             }
@@ -143,7 +151,8 @@ private fun CoffeeDrinkItem2Landscape(
     @DrawableRes icon: Int
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .background(MaterialTheme.colors.background)
             .padding(16.dp)
     ) {
@@ -173,6 +182,43 @@ private fun CoffeeDrinkItem2Landscape(
                 style = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.onBackground),
                 modifier = Modifier.fillMaxWidth()
             )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun Demo_CoffeeDrinkItem2PortraitAlphaModifier() {
+    val coffeeDrink = coffeeDrinks.first()
+
+    Card(modifier = Modifier.padding(8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Image(
+                bitmap = ImageBitmap.imageResource(coffeeDrink.image),
+                contentDescription = coffeeDrink.name,
+                modifier = Modifier.size(72.dp)
+            )
+
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = coffeeDrink.name,
+                    style = MaterialTheme.typography.h6,
+                )
+
+                Text(
+                    text = coffeeDrink.description,
+                    modifier = Modifier.alpha(ContentAlpha.medium)
+                )
+
+                Text(
+                    text = "Ground coffee, Water",
+                    modifier = Modifier.alpha(ContentAlpha.disabled)
+                )
+            }
         }
     }
 }
