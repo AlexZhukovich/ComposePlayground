@@ -8,4 +8,16 @@
 
     <string name="espresso_title">Espresso</string>
     <string name="espresso_ingredients">Ground coffee, Water</string>
+
+    <string name="demoSwitchSettings_super_important_item_title">Super important Item</string>
+    <string name="demoSwitchSettings_super_important_item_description">Description for "Super important Item"</string>
+
+    <string name="demoSwitchSettings_super_important_subitem1_title">Super important sub item 1</string>
+    <string name="demoSwitchSettings_super_important_subitem1_description">Description for "Super important sub item 1"</string>
+
+    <string name="demoSwitchSettings_super_important_subitem2_title">Super important sub item 2</string>
+    <string name="demoSwitchSettings_super_important_subitem2_description">Description for "Super important sub item 2"</string>
+
+    <string name="demoSwitchSettings_important_item_title">Important Item</string>
+    <string name="demoSwitchSettings_important_item_description">Description for "Important Item"</string>
 </resources>

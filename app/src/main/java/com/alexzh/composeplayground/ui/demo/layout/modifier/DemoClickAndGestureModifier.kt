@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
@@ -18,7 +20,7 @@ import androidx.compose.ui.unit.sp
 @Preview
 @Composable
 fun Demo_ClickableModifier() {
-    val count = remember { mutableStateOf(0) }
+    var count by remember { mutableStateOf(0) }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -26,7 +28,7 @@ fun Demo_ClickableModifier() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = count.value.toString(),
+            text = count.toString(),
             fontSize = 32.sp,
             modifier = Modifier.padding(16.dp)
         )
@@ -37,10 +39,10 @@ fun Demo_ClickableModifier() {
                 fontSize = 20.sp,
                 modifier = Modifier
                     .padding(16.dp)
-                    .clickable { count.value -= 1 }
+                    .clickable { count -= 1 }
             )
             Button(
-                onClick = { count.value += 1},
+                onClick = { count += 1},
                 modifier = Modifier.padding(16.dp)
             ) {
                 Text(text = "+ 1")
@@ -52,8 +54,8 @@ fun Demo_ClickableModifier() {
                     .padding(16.dp)
                     .pointerInput(Unit) {
                         detectTapGestures(
-                            onDoubleTap = { count.value += 20 },
-                            onLongPress = { count.value -= 20 }
+                            onDoubleTap = { count += 20 },
+                            onLongPress = { count -= 20 }
                         )
                     }
             )
