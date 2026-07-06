@@ -22,9 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 
 /**
  * Jetpack Compose: Text
@@ -511,7 +510,6 @@ fun DemoText_style_substrings() {
  *
  * Read more and check samples: https://alexzh.com/jetpack-compose-style-text/#example-the-first-letter-of-a-book-chapter
  */
-@ExperimentalPagerApi
 @Preview(name = "Example: Capitalize the first letter of a book chapter")
 @Composable
 fun DemoText_capitalize_the_first_letter_of_a_book_chapter() {
@@ -540,15 +538,13 @@ fun DemoText_capitalize_the_first_letter_of_a_book_chapter() {
     capitalize_the_first_letter_of_a_book_chapter(content)
 }
 
-@ExperimentalPagerApi
 @Composable
 fun capitalize_the_first_letter_of_a_book_chapter(
     content: List<List<String>>,
     testData: String = ""
 ) {
-    val pagerState = rememberPagerState(initialPage = 0)
+    val pagerState = rememberPagerState(initialPage = 0, pageCount = { content.size })
     HorizontalPager(
-        count = content.size,
         state = pagerState,
         modifier = Modifier.fillMaxSize()
     ) { page ->

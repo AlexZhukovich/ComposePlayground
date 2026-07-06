@@ -1,46 +1,40 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
-    compileSdk 34
-    namespace 'com.alexzh.composeplayground'
+    compileSdk = 37
+    namespace = 'com.alexzh.composeplayground'
 
     defaultConfig {
-        applicationId "com.alexzh.composeplayground"
-        minSdk 23
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.alexzh.composeplayground"
+        minSdk = 23
+        targetSdk = 33
+        versionCode = 1
+        versionName = "1.0"
         multiDexEnabled = true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary true
+            useSupportLibrary = true
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-        coreLibraryDesugaringEnabled true
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled = true
     }
     buildFeatures {
-        compose true
+        compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion kotlin_compiler_extenstion_version
-    }
-    packagingOptions {
+    packaging {
         resources {
             excludes += ['/META-INF/AL2.0', '/META-INF/LGPL2.1']
         }
@@ -62,9 +56,8 @@ dependencies {
     implementation 'androidx.compose.foundation:foundation'
     implementation 'androidx.activity:activity-compose'
     implementation 'androidx.compose.material:material-icons-extended'
-    implementation "androidx.compose.material3:material3"
-    implementation "com.google.accompanist:accompanist-pager:$accompanist_pager_version"
-    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_systemuicontroller_version"
+    implementation "androidx.compose.material3:material3:$material3_version"
+    implementation "androidx.constraintlayout:constraintlayout-compose:$compose_constraintlayout_version"
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"

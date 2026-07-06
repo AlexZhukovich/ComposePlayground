@@ -4,11 +4,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import com.google.accompanist.pager.ExperimentalPagerApi
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalPagerApi
 @ExperimentalFoundationApi
 class TextTest {
 
